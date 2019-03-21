@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Numerics;
+
+namespace Big_Numberss
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string numbers = Console.ReadLine();
+            List<int> aNumber = (numbers.Split(' ').Select(s => int.Parse(s)).ToList());
+
+            int a = aNumber[0];
+            int b = aNumber[1];
+
+            
+
+
+            BigInteger[] aaa = new BigInteger[a];
+            string y = Console.ReadLine();
+            aaa = (y.Split(' ').Select(s => BigInteger.Parse(s)).ToArray());
+
+            BigInteger[] bbb = new BigInteger[b];
+            string yy = Console.ReadLine();
+            bbb = (yy.Split(' ').Select(s => BigInteger.Parse(s)).ToArray());
+
+
+            int ccc = 0;
+
+            if (a > b)
+            {
+                ccc = a;
+            }
+            else
+            {
+                ccc = b;
+            }
+            BigInteger sum1 = 0;
+
+            BigInteger[] final = new BigInteger[ccc];
+
+            BigInteger sum = 0;
+
+            for (int i = 0; i < final.Length; i++)
+            {
+               
+
+                if (i <= aaa.Length-1 && i <= bbb.Length-1)
+                {
+                    BigInteger num1 = aaa[i];
+                    BigInteger num2 = bbb[i];
+                    sum = num1 + num2 + sum1;
+                }
+                if (i > bbb.Length-1)
+                {
+                    BigInteger num1 = aaa[i];
+                    BigInteger num2 = 0;
+                    sum = num1 + num2 + sum1;
+                }
+                if (i > aaa.Length-1)
+                {
+                    BigInteger num1 = bbb[i];
+                    BigInteger num2 = 0;
+                    sum = num1 + num2 + sum1;
+
+                }
+                if (sum < 10)
+                {
+                    sum1 = 0;
+                }
+                
+                if (sum >= 10)
+                {
+                    sum = sum - 10;
+                    sum1 = 1;
+                }
+               
+                final[i] = sum;
+                //============================//
+
+            }
+            foreach (BigInteger item in final)
+            {
+                Console.Write(item+" ");
+            }
+
+
+        }
+    }
+}
